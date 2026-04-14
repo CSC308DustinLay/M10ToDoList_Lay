@@ -8,7 +8,25 @@
 import UIKit
 
 class AddViewController: UIViewController {
-
+    var listVC: ListViewController?
+    
+    @IBOutlet weak var inputField: UITextField!
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
+    @IBAction func save(_ sender: Any) {
+        guard let text = inputField.text else{
+            return
+        }
+        listVC?.toDoList.append(text) //optional chainning
+        //Reloads table view so data appears
+        listVC?.toDoTableView.reloadData()
+//        print(listVC?.toDoList)
+        dismiss(animated: true)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
